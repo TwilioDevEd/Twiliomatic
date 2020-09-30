@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/normalize.css@8.0.1/normalize.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@twilio-paste/design-tokens@6.3.0/dist/tokens.custom-properties.css" />
+  <link rel="stylesheet" href="index.css" />
+  <title>Results</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178595660-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-178595660-1');
+  </script>
+</head>
+
+<body class="mode--{{ MODE }}">
+  <div class="tp-app" id="app">
+    <header class="tp-site-header">
+      <a href="/index">
+        <img src="twiliomatic_type_v2_logo.png" alt="" width="550" class="robot-image" />
+      </a>
+    </header>
+    <main class="tp-site-main">
+      <div class="tp-site-main-inner">
+        <!-- checkout Paste Headings https://paste.twilio.design/components/heading -->
+        <h1>Bleep bloop bleep - Your code is ready!</h1>
+        <p class="tp-lead">
+          &ldquo;{{ results.query }}&rdquo;
+        </p>
+        <hr />
+        <div class="tp-layout tp-layout--2-col">
+          <div class="tp-layout-col">
+            <h2>This is your code:</h2>
+            <div class="tp-gist">
+              <script src="https://gist.github.com/{{ GITHUB_USER }}/{{ gistId }}.js"></script>
+              <span class="instructions">To request to delete this gist from GitHub, email <a
+                  href="mailto:open-source@twilio.com">open-source@twilio.com</a></span>
+            </div>
+            <a href="/index">Generate another app.</a>
+          </div>
+          <div class="tp-layout-col">
+            <h2>Deploy this code to Twilio using the <a href="https://www.twilio.com/docs/twilio-cli/quickstart"
+                target="_blank">Twilio CLI</a>:</h2>
+            <!-- checkout Paste forms https://paste.twilio.design/form-elements/textarea/ -->
+            <label class="tp-label" for="number">Provision a phone number</label>
+            <div class="tp-input-wrapper">
+              <textarea class="tp-input tp-textarea" size="60" id="txt-number"
+                rows="3">twilio phone-numbers:buy:local --country-code US</textarea>
+              <div class="tp-input-suffix">
+                <button class="tp-button tp-button--icon-only" type="button" id="btn-number" title="copy provisioning">
+                  <span class="tp-icon"><svg role="img" aria-hidden="true" width="100%" height="100%"
+                      viewBox="0 0 20 20" aria-labelledby="204">
+                      <path fill="currentColor" fill-rule="evenodd"
+                        d="M13.469 2.5c.63 0 1.15.48 1.212 1.094l.007.125-.001 1.593h1.407c.73 0 1.331.558 1.4 1.271l.006.136v9.375c0 .776-.63 1.406-1.406 1.406H6.719c-.777 0-1.407-.63-1.407-1.406v-1.407H3.719c-.631 0-1.15-.48-1.213-1.094L2.5 13.47v-9.75c0-.631.48-1.15 1.094-1.213L3.72 2.5h9.75zm2.625 3.75H6.719a.469.469 0 00-.469.469v9.375c0 .259.21.468.469.468h9.375c.259 0 .468-.21.468-.468V6.719a.469.469 0 00-.468-.469zm-2.625-2.813h-9.75a.281.281 0 00-.274.217l-.007.065v9.75c0 .133.092.244.216.274l.065.007 1.593-.001v-7.03c0-.731.558-1.332 1.271-1.4l.136-.006 7.031-.001V3.719a.281.281 0 00-.217-.274l-.064-.007z">
+                      </path>
+                    </svg></span>
+                </button>
+              </div>
+            </div>
+            <!-- checkout Paste forms https://paste.twilio.design/form-elements/textarea/ -->
+            <label class="tp-label" for="webhook">Configure your inbound webhook</label>
+            <div class="tp-input-wrapper">
+              <textarea class="tp-input tp-textarea" size="60" id="txt-webhook" rows="6">
+twilio phone-numbers:update [YOUR NUMBER HERE] {{#if (eq results.type "VoiceResponse") ~}}
+                --voice-url{{else}}--sms-url{{/if}}="https://{{ DOMAIN_NAME }}/incoming?GistId={{ gistId }}" {{#if (eq results.type "VoiceResponse") ~}}
+                --voice-fallback-url={{else}}--sms-fallback-url={{/if}}"https://{{ DOMAIN_NAME }}/fallback"
+              </textarea>
+              <div class="tp-input-suffix">
+                <button class="tp-button tp-button--icon-only" type="button" id="btn-webhook"
+                  title="copy webhook config">
+                  <span class="tp-icon"><svg role="img" aria-hidden="true" width="100%" height="100%"
+                      viewBox="0 0 20 20" aria-labelledby="204">
+                      <path fill="currentColor" fill-rule="evenodd"
+                        d="M13.469 2.5c.63 0 1.15.48 1.212 1.094l.007.125-.001 1.593h1.407c.73 0 1.331.558 1.4 1.271l.006.136v9.375c0 .776-.63 1.406-1.406 1.406H6.719c-.777 0-1.407-.63-1.407-1.406v-1.407H3.719c-.631 0-1.15-.48-1.213-1.094L2.5 13.47v-9.75c0-.631.48-1.15 1.094-1.213L3.72 2.5h9.75zm2.625 3.75H6.719a.469.469 0 00-.469.469v9.375c0 .259.21.468.469.468h9.375c.259 0 .468-.21.468-.468V6.719a.469.469 0 00-.468-.469zm-2.625-2.813h-9.75a.281.281 0 00-.274.217l-.007.065v9.75c0 .133.092.244.216.274l.065.007 1.593-.001v-7.03c0-.731.558-1.332 1.271-1.4l.136-.006 7.031-.001V3.719a.281.281 0 00-.217-.274l-.064-.007z">
+                      </path>
+                    </svg></span>
+                </button>
+              </div>
+            </div>
+            <span class="instructions">Replace <strong>[YOUR NUMBER HERE]</strong> with the phone number you
+              provisioned.</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="tp-site-footer">
+      <div class="tp-footer-credit">
+        Built with
+        <a class="tp-footer-link" href="https://paste.twilio.design" target="_blank">Paste</a> | <a
+          href="https://www.twilio.com/legal/aup">Twilio's Acceptable Use Policy</a>
+      </div>
+    </footer>
+  </div>
+  <script src="index.js"></script>
+</body>
+
+</html>

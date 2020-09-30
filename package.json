@@ -1,0 +1,37 @@
+{
+  "name": "twiliomatic",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "start": "twilio-run",
+    "deploy": "twilio-run deploy",
+    "build-all-prompts": "node scripts/twiml-build.js",
+    "change-mode": "node scripts/change-mode.js",
+    "set-favorites": "node scripts/set-favorites.js",
+    "delete-all-gists": "node scripts/delete-all-gists.js",
+    "purge-cache": "node scripts/purge-cache.js"
+  },
+  "devDependencies": {
+    "configure-env": "^1.0.0",
+    "jest": "^26.4.2",
+    "twilio-run": "^2.0.0"
+  },
+  "engines": {
+    "node": "10.17.0"
+  },
+  "dependencies": {
+    "@azure/cognitiveservices-contentmoderator": "^5.0.1",
+    "@azure/ms-rest-azure-js": "^2.0.1",
+    "@octokit/plugin-paginate-rest": "^2.4.0",
+    "@octokit/rest": "^18.0.5",
+    "axios": "^0.20.0",
+    "cloudflare": "^2.7.0",
+    "handlebars": "^4.7.6",
+    "he": "^1.2.0",
+    "openai-api": "^1.0.9",
+    "string.prototype.matchall": "^4.0.2",
+    "twilio": "^3.49.0",
+    "xml-formatter": "^2.1.3"
+  }
+}

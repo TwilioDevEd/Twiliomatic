@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://unpkg.com/normalize.css@8.0.1/normalize.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@twilio-paste/design-tokens@6.3.0/dist/tokens.custom-properties.css" />
+  <link rel="stylesheet" href="index.css" />
+  <title>Twiliomatic</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178595660-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-178595660-1');
+  </script>
+</head>
+
+<body>
+  <div class="tp-app" id="app">
+    <header class="tp-site-header">
+      <img src="twiliomatic_type_v2_logo.png" alt="" width="550" class="robot-image" />
+    </header>
+    <main class="tp-site-main">
+      <div class="tp-site-main-inner">
+        <div class="tp-layout tp-layout--2-col">
+          <div class="tp-layout-col">
+            <!-- checkout Paste Headings https://paste.twilio.design/components/heading -->
+            <h1>Tell me what to code!</h1>
+            <p class="tp-lead">
+              Use our bot to generate <a
+                href="https://www.twilio.com/docs/glossary/what-is-twilio-markup-language-twiml#how-does-twiml-work"
+                target="_blank">TwiML</a> for use in Twilio apps.
+            </p>
+            <hr />
+            <h2>Some ideas to get you started:</h2>
+            <ul>
+              <li>Create an app that says a famous quote</li>
+              <li>Build an app that plays classical music</li>
+              <li>Create a conference room named "standup"</li>
+            </ul>
+          </div>
+          <div class="tp-layout-col">
+            <!-- checkout Paste Card https://paste.twilio.design/components/card -->
+            <article class="tp-card">
+              <form method="POST" action="/processing">
+                <label class="tp-label" for="query">Enter your app idea:</label>
+                <!-- checkout Paste forms https://paste.twilio.design/form-elements/textarea/ -->
+                <div class="tp-input-wrapper">
+                  <textarea class="tp-input tp-textarea" size="60" id="query" name="Query" rows="6"
+                    placeholder="Create an app that says 'Hello World!'"></textarea>
+                </div>
+                <button class="tp-button tp-button--primary">Generate</button>
+              </form>
+            </article>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="tp-site-footer">
+      <div class="tp-footer-credit">
+        Built with
+        <a class="tp-footer-link" href="https://paste.twilio.design" target="_blank">Paste</a>
+      </div>
+    </footer>
+  </div>
+  <script src="index.js"></script>
+</body>
+
+</html>

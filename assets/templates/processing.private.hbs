@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/normalize.css@8.0.1/normalize.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@twilio-paste/design-tokens@6.3.0/dist/tokens.custom-properties.css" />
+  <link rel="stylesheet" href="index.css" />
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://media.twiliocdn.com/sdk/js/sync/v0.12/twilio-sync.min.js"></script>
+  <script src="/long-query.js"></script>
+  <title>Processing your request...</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178595660-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-178595660-1');
+  </script>
+</head>
+
+<body class="mode--{{ MODE }}">
+  <div class="tp-app" id="app">
+    <header class="tp-site-header">
+      <lottie-player class="robot-image" src="lf30_editor_jfachqn0.json" background="transparent" speed="1" loop
+        autoplay>
+      </lottie-player>
+    </header>
+    <main class="tp-site-main">
+      <div class="tp-site-main-inner processing">
+        <!-- checkout Paste Headings https://paste.twilio.design/components/heading -->
+        <h1>Processing your request</h1>
+        <p class="tp-lead" id="progress">Beep</p>
+      </div>
+    </main>
+    <footer class="tp-site-footer">
+      <div class="tp-footer-credit">
+        Built with
+        <a class="tp-footer-link" href="https://paste.twilio.design" target="_blank">Paste</a>
+      </div>
+    </footer>
+  </div>
+  <script>
+    const noises = [
+      "beep",
+      "boop",
+      "bleep",
+      "blop",
+      "whizz",
+      "uhn",
+      "bip",
+      "bonk",
+      "ffft",
+      "whirr",
+      "brr",
+      "zzzzztt"
+    ];
+    const progressEl = document.getElementById("progress");
+    let counter = 0;
+
+    function addNoises(count) {
+      const randomNoises = [];
+      for (let i = 0; i < count; i++) {
+        randomNoises.push(noises[Math.floor(Math.random() * noises.length)]);
+      }
+      progressEl.insertAdjacentHTML("beforeend", ` ${randomNoises.join(' ')}`);
+    }
+
+    function noiseHeartbeat() {
+      const randomBeat = Math.floor(Math.random() * 1500);
+      addNoises(1);
+      setTimeout(() => noiseHeartbeat(), randomBeat);
+    }
+    noiseHeartbeat();
+    const config = {
+      ModerateQuery: true,
+      PostToGitHub: true,
+      hostName: window.location.hostname,
+      onStatusChange: (status) => {
+        console.dir(`Status changed: ${status}`);
+        addNoises(5);
+      }
+    };
+    longQuery(config, `{{ query }}`)
+      .then((data) => {
+        console.log("Got data back...");
+        console.dir(data);
+        window.location.href = `/results?GistId=${data.gistId}`;
+      })
+      .catch((err) => {
+        console.error(err);
+        window.location.href = `/error?Error=${err}`;
+      });
+  </script>
+</body>
+
+</html>

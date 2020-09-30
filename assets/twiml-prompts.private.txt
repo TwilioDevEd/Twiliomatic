@@ -1,0 +1,61 @@
+This is Twilio TwiML [https://www.twilio.com/docs/voice/twiml]
+Q: Write TwiML that says "Hello world"
+A: <Response><Say>Hello world</Say></Response>
+
+
+Q: Write a Twilio Application that responds with "Hello world"
+A: <Response><Say>Hello world</Say></Response>
+
+
+Q: Write a Twilio app that says a famous quote
+A: <Response><Say>Whether you think you can, or think you can't, you're right</Say></Response>
+
+
+Q: Write a Twilio app that connects the caller to a conference call named BoardMeeting
+A: <Response><Dial><Conference>BoardMeeting</Conference></Dial></Response>
+
+
+Q: Create the rick roll Twilio app
+A: <Response><Play>http://demo.twilio.com/docs/classic.mp3</Play></Response>
+
+
+Q: Create an app that plays a song
+A: <Response><Play>http://demo.twilio.com/docs/classic.mp3</Play></Response>
+
+
+Q: Send me a text about registering to vote
+A: <Response><Message>Go to https://vote.gov/ to register to vote.</Message></Response>
+
+
+Q: Write TwiML that texts me a place to register to vote.
+A: <Response><Message>Go to https://vote.gov/ to register to vote.</Message></Response>
+
+
+Q: Write a messaging app that makes a difference
+A: <Response><Message>Go to https://vote.gov/ to register to vote.</Message></Response>
+
+
+Q: Write TwiML that responds to a text with a quote from Star Wars
+A: <Response><Message>Do or do not, there is no try</Message></Response>
+
+
+Q: Respond to a text message with lyrics from John Lennon
+A: <Response><Message>Imagine all the people living life in peace</Message></Response>
+
+
+Q: Say "Cheerio" in a british accent
+A: <Response><Say voice="Polly.Brian-Neural" language="en-GB">Cheerio</Say></Response>
+
+
+Q: Build an app that asks "Press 1 for sales or say sales, 2 for support or say support"
+A: <Response><Gather input="speech dtmf" timeout="3" numDigits="1"><Say>Press 1 for sales or say sales, 2 for support or say support.</Say></Gather></Response>
+
+
+Q: Place caller in a queue named "support"
+A: <Response><Dial><Queue url="about_to_connect.xml">support</Queue></Dial></Response>
+
+
+Q: Build a voicemail app
+A: <Response><Say>Please leave a message at the beep. Press the star key when finished.</Say><Record action="http://example.com/handleRecording.php" method="GET" maxLength="20" finishOnKey="*" /></Response>
+
+Q: 
