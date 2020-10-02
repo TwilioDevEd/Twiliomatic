@@ -43,14 +43,14 @@ Deploy to prod
 twilio serverless:deploy --production
 ```
 
-The main interface **currently** lives at `/index.html`
+The main interface **currently** lives at `/index`
 
 Use the output from your deploys to locate the full url.
 
 It will look something like:
 
 ```bash
-https://twiliomatic-9999-dev.twil.io/index.html
+https://twiliomatic-9999-dev.twil.io/index
 ```
 
 Where 9999 is unique to your deploy and environment.
@@ -59,7 +59,7 @@ Where 9999 is unique to your deploy and environment.
 
 ### change-mode
 
-Provides the ability to change modes by environment. `keynote` for when it airs. `recording` for when it's being recorded. See `/mode` and it is dropped on the body tag CSS wise
+Provides the ability to change modes by environment. `keynote` for when it airs. `shutdown` to turn things off.
 
 ```bash
 npm run change-mode --mode=keynote --env=production
@@ -111,7 +111,6 @@ Returns an object that helps to detect the current state of things
 **/requester**
 
 Allows for a long running query through the use of Sync.
-
 
 | Parameter | Description |
 | --------- | ----------- |
