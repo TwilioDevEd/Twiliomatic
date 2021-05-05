@@ -27,7 +27,7 @@
     "@octokit/rest": "^18.0.5",
     "axios": "^0.20.0",
     "cloudflare": "^2.7.0",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "he": "^1.2.0",
     "openai-api": "^1.0.9",
     "string.prototype.matchall": "^4.0.2",
