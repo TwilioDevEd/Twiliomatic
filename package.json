@@ -29,9 +29,9 @@
     "cloudflare": "^2.7.0",
     "handlebars": "^4.7.6",
     "he": "^1.2.0",
-    "openai-api": "^1.0.9",
+    "openai-api": "^1.0.14",
     "string.prototype.matchall": "^4.0.2",
-    "twilio": "^3.49.0",
+    "twilio": "^3.54.2",
     "xml-formatter": "^2.1.3"
   }
 }
