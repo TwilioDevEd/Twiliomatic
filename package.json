@@ -31,7 +31,7 @@
     "he": "^1.2.0",
     "openai-api": "^1.0.9",
     "string.prototype.matchall": "^4.0.2",
-    "twilio": "^3.49.0",
+    "twilio": "^4.0.0",
     "xml-formatter": "^2.1.3"
   }
 }
