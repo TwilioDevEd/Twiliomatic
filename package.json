@@ -23,8 +23,8 @@
   "dependencies": {
     "@azure/cognitiveservices-contentmoderator": "^5.0.1",
     "@azure/ms-rest-azure-js": "^2.0.1",
-    "@octokit/plugin-paginate-rest": "^2.4.0",
-    "@octokit/rest": "^18.0.5",
+    "@octokit/plugin-paginate-rest": "^11.4.1",
+    "@octokit/rest": "^21.1.1",
     "axios": "^0.20.0",
     "cloudflare": "^2.7.0",
     "handlebars": "^4.7.6",
